@@ -1,0 +1,8 @@
+.superContainer{
+    background-image: url('../images/imagebkg.png');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-attachment: fixed;
+    display: grid;
+    grid-template-columns: 40% 60%;
+}

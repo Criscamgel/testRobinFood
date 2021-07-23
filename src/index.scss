@@ -11,3 +11,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: all 0.5s;
+}
+
+.center {
+    align-self: center;
+    justify-self: center;
+}
+
+input[type=text], input[type=password] {
+  -webkit-appearance: none;
+  outline: none;
+  border: none;
+  width: 100%;
+}
+
+.textCenter{
+  text-align: center;
+}
+
+

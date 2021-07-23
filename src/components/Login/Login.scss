@@ -1,0 +1,59 @@
+@import '../../scss/variables';
+@import '../../scss/fonts';
+
+.container{
+    background-color: white;
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    height: 100vh;
+    .content{
+        display: grid;
+        grid-template-rows: 1fr 5% 2fr;
+        .bestPizza{
+            width: 50%;
+        }
+        .tituloLogin{
+            font-size: 35px;
+            font-weight: 500;
+        }
+        .subtituloLogin{
+            font-size: 20px;
+            color: $gris;
+        }
+        form{
+            display: grid;
+            grid-template-rows: repeat(2, 1fr);
+            width: 100%;
+            .inputIcon{
+                display: grid;
+                border: 1px solid $gris;
+                grid-template-columns: 80% 20%;
+                padding: 10px 15px 10px 15px;
+                border-radius: 3px;
+                font-size: 10px;
+                margin-bottom: 8px;
+                img{
+                    align-self: center;
+                    justify-self: right;
+                    width: 40%;
+                }
+            }
+            .remember {
+                margin: 25px 0px;
+                font-size: 14px;
+                font-weight: 600;
+                font-family: 'Voluta';
+            }
+            button {
+                background-color: $amarillo;
+                padding: 18px;
+                border: none;
+                border-radius: 4px;
+                font-family: 'Voluta';
+                font-size: 14px;
+                box-shadow: 2px 2px 5px 1px rgba(23, 144, 14, 0.53);
+            }
+        }
+
+    }
+}
