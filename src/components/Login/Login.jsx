@@ -8,23 +8,22 @@ import icPassword from '../../images/ic_contrasena.png';
 import { DataContext } from '../../context/GlobalDataContext';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import { LoginContext } from '../../context/LoginContext';
 
 export const Login = () => {
 
     const [msgError, setMsgError] = useState({
         user: "",
-        password: ""
+        password: "",
+        login: ""
     });
 
-    const [data, setData] = useState({
-        user: "",
-        password: "",
-        login: false
-    });
+    const loginContext = useContext(LoginContext);
+    const { setLogin, login } = loginContext;
     
     const [datosForm, handleInputChange, reset] = useForm({
-        user: "",
-        password: "",
+        user: "pperez@perez.com",
+        password: "pperezs123",
         login: false
     });
     
@@ -49,8 +48,7 @@ export const Login = () => {
     const submitLogin = (e) => {
         e.preventDefault();
         validarCampos();
-        setData(datosForm);
-        validarCampos() && consultarDatos();
+        validarCampos() && autenticar();
     }
 
     const validarCampos = () => {
@@ -74,23 +72,26 @@ export const Login = () => {
         return !Object.values(msgError).some(v => v);
     }
 
-    const login = () => {
+    const autenticar = () => {
         
-        let login;
-        DataGlobal.response.users.filter(
-            (data) => { 
-            login = data.email == datosForm.name && data.password == datosForm.password; 
+        let loginBool;
+        DataGlobal.response.users.find(
+            (data) => {
+            loginBool = data.email === datosForm.user;
+            if(loginBool){
+            loginBool = data.password === datosForm.password;
+                if(loginBool){
+                    setLogin({user: datosForm.user,
+                              password: datosForm.password,  
+                              login: loginBool});
+                    
+                    return <Redirect to="/inicio" />;
+                }else{
+                    msgError.login = "Usuario o Contraseña invalido, revisa las credenciales"
+                }    
+            }
             }
         );
-        console.log(login);
-        return login
-    }
-
-    const consultarDatos = async() => {
-        await data.name;
-        console.log(data);
-        login() && <Redirect to='/inicio'/>;
-
     }
 
     return (
@@ -131,7 +132,8 @@ export const Login = () => {
                             <small>{ msgError.password }</small>
                             </div>
                             <p className="textCenter remember">Olvidaste tu contraseña?</p>
-                            <button type="submit" onClick={ submitLogin }>Iniciar Sesión</button>
+                            <button onClick={ submitLogin }>Iniciar Sesión</button>
+                            <small>{ msgError.login }</small>
                         </form>
                     </div>
             </div>

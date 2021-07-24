@@ -6,6 +6,7 @@ import {
     Link,
     Redirect
   } from "react-router-dom";
+import { RutaPrivada } from '../../routes/RutaPrivada';
 import { BrandMenu } from '../BrandMenu/BrandMenu';
 import { Login } from '../Login/Login';
 import './Principal.scss';
@@ -17,7 +18,7 @@ export const Principal = () => {
                 <div>
                     <Switch>
                         <Route exact path="/login" component={ Login }/>
-                        <Route exact path="/inicio" component={ BrandMenu }/>
+                        <RutaPrivada exact path="/inicio" component={ BrandMenu } />
                         <Redirect to="/login" />
                     </Switch>
                 </div>
