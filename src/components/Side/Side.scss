@@ -1,3 +1,5 @@
+@import '../../scss/mixins';
+
 .imgContainer{
     display: grid;
     height: 100vh;
@@ -5,3 +7,12 @@
         width: 90%;
     }
 }
+
+.oldDesk{
+    @include smallTablet(){
+      display: none;
+    }
+    @include Asmall(){
+      display: none;
+    }
+  }

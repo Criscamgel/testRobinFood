@@ -18,7 +18,7 @@ export const Principal = () => {
                     <Switch>
                         <Route exact path="/login" component={ Login }/>
                         <Route exact path="/inicio" component={ BrandMenu }/>
-                        <Redirect to="/" />
+                        <Redirect to="/login" />
                     </Switch>
                 </div>
           </Router>  

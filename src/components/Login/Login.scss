@@ -1,11 +1,19 @@
 @import '../../scss/variables';
 @import '../../scss/fonts';
+@import '../../scss/mixins';
 
 .container{
     background-color: white;
     display: grid;
     grid-template-columns: 30% 40% 30%;
     height: 100vh;
+    @include tabletLaptop(){
+        grid-template-columns: 20% 60% 20%;
+    }
+    @include Asmall(){
+        grid-template-columns: 15% 70% 15%;
+    }
+
     .content{
         display: grid;
         grid-template-rows: 1fr 5% 2fr;
@@ -13,12 +21,21 @@
             width: 50%;
         }
         .tituloLogin{
-            font-size: 35px;
+            font-size: 30px;
             font-weight: 500;
+            @include Asmall(){
+                font-size: 25px;
+            }
         }
         .subtituloLogin{
-            font-size: 20px;
+            font-size: 18px;
             color: $gris;
+            @include tabletLaptop(){
+                font-size: 16px;
+            }
+            @include Asmall(){
+                font-size: 13px;
+            }
         }
         form{
             display: grid;
@@ -36,6 +53,10 @@
                     align-self: center;
                     justify-self: right;
                     width: 40%;
+                }
+                small{
+                    color: $rojoDanger;
+                    font-size: 9px;
                 }
             }
             .remember {
