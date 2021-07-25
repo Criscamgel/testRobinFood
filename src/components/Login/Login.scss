@@ -54,10 +54,6 @@
                     justify-self: right;
                     width: 40%;
                 }
-                small{
-                    color: $rojoDanger;
-                    font-size: 9px;
-                }
             }
             .remember {
                 margin: 25px 0px;
@@ -73,8 +69,14 @@
                 font-family: 'Voluta';
                 font-size: 14px;
                 box-shadow: 2px 2px 5px 1px rgba(23, 144, 14, 0.53);
+                margin-bottom: 5px;
             }
         }
 
     }
+}
+
+small{
+    color: $rojoDanger;
+    font-size: 9px;
 }

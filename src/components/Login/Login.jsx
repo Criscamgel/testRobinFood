@@ -7,10 +7,12 @@ import icUser from '../../images/ic_usuario.png';
 import icPassword from '../../images/ic_contrasena.png';
 import { DataContext } from '../../context/GlobalDataContext';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { LoginContext } from '../../context/LoginContext';
 
 export const Login = () => {
+
+    const history = useHistory();
 
     const [msgError, setMsgError] = useState({
         user: "",
@@ -19,7 +21,7 @@ export const Login = () => {
     });
 
     const loginContext = useContext(LoginContext);
-    const { setLogin, login } = loginContext;
+    const { setLogin } = loginContext;
     
     const [datosForm, handleInputChange, reset] = useForm({
         user: "pperez@perez.com",
@@ -84,10 +86,11 @@ export const Login = () => {
                     setLogin({user: datosForm.user,
                               password: datosForm.password,  
                               login: loginBool});
-                    
-                    return <Redirect to="/inicio" />;
+                              history.push("/inicio");;
                 }else{
-                    msgError.login = "Usuario o Contraseña invalido, revisa las credenciales"
+                    setMsgError({
+                        login: "Usuario o Contraseña invalido, revisa las credenciales" 
+                    });
                 }    
             }
             }
@@ -133,7 +136,7 @@ export const Login = () => {
                             </div>
                             <p className="textCenter remember">Olvidaste tu contraseña?</p>
                             <button onClick={ submitLogin }>Iniciar Sesión</button>
-                            <small>{ msgError.login }</small>
+                            <small className="textCenter">{ msgError.login }</small>
                         </form>
                     </div>
             </div>

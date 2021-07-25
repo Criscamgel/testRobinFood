@@ -8,7 +8,7 @@ export const RutaPrivada = ({ component: Component, ...props }) => {
     const { login } = loginContext;
 
     return (
-        <Route { ...props } render= { props => !login ? ( <Redirect to="/login" /> ) 
+        <Route { ...props } render= { props => !login.login ? ( <Redirect to="/login" /> ) 
         : ( <Component { ...props } /> )
         } />
     )
