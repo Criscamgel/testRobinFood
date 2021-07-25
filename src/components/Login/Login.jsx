@@ -59,7 +59,12 @@ export const Login = () => {
 
         msgError.user = validator.isEmpty(user) ? "El campo usuario debe estar diligenciado" : null;
         if (!validator.isEmpty(user)){
-            msgError.user = !validator.isLength(user.toString(),{min:5, max:40}) ? "El usuario diligenciado es invalido, debe contener más de 5 caracteres" : null;
+            if(!validator.isLength(user.toString(),{min:5, max:40})) {
+                msgError.user = "El usuario diligenciado es invalido, debe contener más de 5 caracteres";  
+            } 
+            if( !validator.isEmail(user) ) {
+                msgError.user = "El usuario diligenciado es un email invalido";
+            } 
         }
         
         msgError.password = validator.isEmpty(password) ? "El campo password debe estar diligenciado" : null;
