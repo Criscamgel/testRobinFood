@@ -1,19 +1,37 @@
 import './BrandMenu.scss';
 
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios';
+import { DataContext } from "../../context/GlobalDataContext";
 
 export const BrandMenu = () => {
 
     useEffect(() => {
-        getPizzerias();
+        getImgPizzerias();
     }, [])
-    
-    const getPizzerias = async() => {
+
+    const dataContext = useContext(DataContext);
+    const { DataGlobal } = dataContext;
+    const [dataGlobal, setDataGlobal] = useState([]);
+    let dataGlobalInt = [ ...DataGlobal.response.stores ];
+        
+    const getImgPizzerias = async() => {
         try{
-            const resp = await axios.get(process.env.REACT_APP_PIZZERIAS.toString());
+            const resp = await axios.get(process.env.REACT_APP_PIZZERIAS);
             const { data } = resp;
-            console.log(data);
+
+            dataGlobalInt.map((store, index) => {
+                if(data.length > 0) {
+                data.filter((pizzeria) => {
+                    if (pizzeria.id === index + 1) {
+                        store.logo = pizzeria.logo;
+                    }
+                })
+                }
+            });
+
+            setDataGlobal(dataGlobalInt);
+            console.log(dataGlobalInt);
             
         }catch(err) {
             alert(`!UPS! Ocurrio un error con el servicio, por favor vuelve a ingresar mas tarde, Error: ${err}`);
@@ -21,7 +39,7 @@ export const BrandMenu = () => {
     }
 
     return (
-        <div className="container">
+        <div className="containerBrandMenu">
             <div className="side"></div>
             <div className="content">
                 <p className="pestana">Pizzerias</p>
@@ -29,7 +47,17 @@ export const BrandMenu = () => {
                 <p className="subtitulo">Escoge tu pizzeria favorita</p>
 
                 <div className="brands">
-
+                    { dataGlobal.length > 0 && dataGlobal.map(pizzeria => (
+                        <div className="brand">
+                        <img 
+                            key={ pizzeria.id } 
+                            src={ pizzeria.logo }
+                            alt={ pizzeria.name } 
+                        />
+                        <p className="pizzeriaName"> { pizzeria.name } </p>
+                        <p className="pizzeriaDireccion"> { pizzeria.address } </p>
+                        </div>
+                    )) }
                 </div>
             </div>
             <div className="side"></div>

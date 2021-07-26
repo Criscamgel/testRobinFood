@@ -1,3 +1,17 @@
-.container{
+    .containerBrandMenu{
     background-color: white;
+    display: grid;
+    grid-template-columns: 10% 70% 20%;
+    height: 100vh;
+    .brands{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        .brand{
+            img{
+                width: 85%;
+            }
+    
+        }
+    }
 }
