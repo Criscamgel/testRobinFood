@@ -3,6 +3,8 @@ import './BrandMenu.scss';
 import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios';
 import { DataContext } from "../../context/GlobalDataContext";
+import imgPass from '../../images/ic_contrasena.png';
+import { Footer } from '../Footer/Footer';
 
 export const BrandMenu = () => {
 
@@ -39,6 +41,7 @@ export const BrandMenu = () => {
     }
 
     return (
+        <>
         <div className="containerBrandMenu">
             <div className="side"></div>
             <div className="content">
@@ -60,7 +63,14 @@ export const BrandMenu = () => {
                     )) }
                 </div>
             </div>
-            <div className="side"></div>
+            <div className="sideFinal">
+                <div className="contExit">
+                    <img src={ imgPass } alt="" />
+                    <p className="exit">Salir</p>
+                </div>
+            </div>
         </div>
+        <Footer />
+        </>
     )
 }

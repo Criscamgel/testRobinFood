@@ -1,0 +1,19 @@
+@import '../../scss/variables';
+
+.contFooter{
+    background-color: $negroFooter;
+    display: grid;
+    grid-template-columns: 10% 70% 20%;
+    padding: 15px 0px;
+    .social{
+        .fa{
+            color: white;
+            margin-right: 5px;
+        }
+    }
+    .sideFinal{
+        img{
+            width: 35%;
+        }
+    }
+}

@@ -1,17 +1,66 @@
-    .containerBrandMenu{
+@import '../../scss/variables';
+
+.containerBrandMenu{
     background-color: white;
     display: grid;
     grid-template-columns: 10% 70% 20%;
-    height: 100vh;
-    .brands{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        .brand{
-            img{
-                width: 85%;
+    height: 90vh;
+    .content{
+        margin: 40px 0 0 0;
+        .pestana {
+            font-size: 12px;
+            text-decoration: underline $amarillo 3px;
+            margin-bottom: 20px;
+        }
+        .titulo {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .subtitulo{
+            font-size: 12px;
+            color: gray;
+            margin-bottom: 30px;
+        }
+        .brands{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-gap: 10px 5px;
+            .brand{
+                img{
+                    width: 85%;
+                }
+                .pizzeriaName {
+                    font-size: 11px;
+                    font-weight: 700;
+                }
+                .pizzeriaDireccion {
+                    font-size: 9px;
+                    color: gray;
+                }
+        
             }
-    
+        }
+    }
+
+    .sideFinal{
+        display: grid;
+        grid-template-rows: 20% 80%;
+        .contExit{
+            display: grid;
+            grid-template-columns: 30% 70%;
+            cursor: pointer;
+            img{
+                width: 60%;
+                align-self: center;
+                justify-self: center;
+                grid-column: 1;
+            }
+            .exit{
+                font-size: 12px;
+                grid-column: 2;
+                align-self: center;
+            }
         }
     }
 }
