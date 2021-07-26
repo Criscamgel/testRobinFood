@@ -1,0 +1,87 @@
+@import '../../../scss/variables';
+
+.containerPizzeria{
+    background-color: white;
+    height: 89vh;
+    display: grid;
+    grid-template-columns: 10% 70% 20%;
+    .content{
+        padding-top: 30px;
+        .pestana {
+            font-size: 12px;
+            text-decoration: underline $amarillo 3px;
+            margin-bottom: 20px;
+        }
+        .contEncabezado{
+            display: grid;
+            grid-template-columns: 60% 40%;
+            img{
+                width: 100%;
+                align-self: center;
+                justify-self: center;
+            }
+            .descripcion{
+                font-size: 12px;
+                align-self: center;
+                justify-self: center;
+                background-color: $amarillo;
+                padding: 10px 5px;            
+            }
+        }
+        .address{
+            font-size: 11px;
+            color: gray;
+            font-weight: 700;
+            text-align: right;
+        }
+        .titulo {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .products{
+          ul{
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: 5% 95%;
+            i{
+                font-size: 10px;
+                align-self: center;
+                justify-self: center;
+            }
+            li{
+                font-size: 12px;
+            }
+          }  
+        }
+    }
+
+    .sideFinal{
+        display: grid;
+        grid-template-rows: 20% 60% 20%;
+        .contExit{
+            display: grid;
+            grid-template-columns: 30% 70%;
+            cursor: pointer;
+            img{
+                width: 60%;
+                align-self: center;
+                justify-self: center;
+                grid-column: 1;
+            }
+            .exit{
+                font-size: 12px;
+                grid-column: 2;
+                align-self: center;
+            }
+        }
+        .volver{
+            display: grid;
+            grid-template-columns: 20% 80%;
+            cursor: pointer;
+            p{
+                font-size: 12px;
+            }
+        }
+    }
+    }

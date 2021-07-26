@@ -9,8 +9,8 @@ export const Footer = () => {
             <div className="side"></div>
                 <div className="content">
                     <div className="social">
-                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                        <i className="fa fa-facebook-official" aria-hidden="true"></i>
+                        <i className="fa fa-instagram" aria-hidden="true"></i>
                     </div>
                 </div>
             <div className="sideFinal">

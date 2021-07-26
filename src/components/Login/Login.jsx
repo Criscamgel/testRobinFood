@@ -23,9 +23,9 @@ export const Login = () => {
     const loginContext = useContext(LoginContext);
     const { setLogin } = loginContext;
     
-    const [datosForm, handleInputChange, reset] = useForm({
-        user: "pperez@perez.com",
-        password: "pperezs123",
+    const [datosForm, handleInputChange] = useForm({
+        user: "jgonzalez@gonzalez.com",
+        password: "jgonzalez123",
         login: false
     });
     
@@ -34,7 +34,7 @@ export const Login = () => {
 
     useEffect(() => {
         obtenerData();
-      }, [])
+      }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     const obtenerData = async() => {
         try{

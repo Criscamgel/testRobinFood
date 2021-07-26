@@ -4,7 +4,7 @@
     background-color: white;
     display: grid;
     grid-template-columns: 10% 70% 20%;
-    height: 90vh;
+    height: 89vh;
     .content{
         margin: 40px 0 0 0;
         .pestana {
@@ -19,8 +19,22 @@
         .subtitulo{
             font-size: 12px;
             color: gray;
-            margin-bottom: 30px;
         }
+        .inputIcon{
+            display: grid;
+            border: 1px solid $gris;
+            grid-template-columns: 80% 20%;
+            padding: 10px 15px 10px 15px;
+            border-radius: 3px;
+            font-size: 10px;
+            margin: 10px 0;
+            width: 95%;
+            i{
+                align-self: center;
+                justify-self: right;
+                width: 20%;
+            }
+            }
         .brands{
             display: grid;
             grid-template-columns: repeat(3, 1fr);
