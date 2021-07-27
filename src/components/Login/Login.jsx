@@ -29,7 +29,7 @@ export const Login = () => {
     });
 
     const loginContext = useContext(LoginContext);
-    const { login, setLogin } = loginContext;
+    const { setLogin } = loginContext;
     
     const [datosForm, handleInputChange] = useForm({
         user: "jgonzalez@gonzalez.com",
