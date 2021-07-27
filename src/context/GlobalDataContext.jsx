@@ -5,12 +5,12 @@ export const DataContext = createContext();
 
 export const DataProvider = (props) => {
 
-    const [DataGlobal, setDataGlobal] = useState();
+    const [dataGlobal, setDataGlobal] = useState({});
     
     return (
         <DataContext.Provider
             value={{
-                DataGlobal,
+                dataGlobal,
                 setDataGlobal
             }}
         >

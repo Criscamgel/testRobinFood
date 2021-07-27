@@ -5,6 +5,7 @@ import { Principal } from './Principal/Principal';
 import { Side } from './Side/Side';
 import { LoginProvider } from '../context/LoginContext';
 import { StoreProvider } from '../context/StoreContext';
+import { PizzeriasProvider } from '../context/PizzeriasContext';
 
 function App() {
   return (
@@ -12,10 +13,12 @@ function App() {
       <div className="superContainer">
         <DataProvider>
         <StoreProvider>
+            <PizzeriasProvider>
             <LoginProvider>
               <Side />
               <Principal />
             </LoginProvider>
+            </PizzeriasProvider>
           </StoreProvider>
         </DataProvider>
       </div>

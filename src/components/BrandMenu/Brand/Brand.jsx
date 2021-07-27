@@ -1,5 +1,4 @@
 import './Brand.scss';
-
 import React, { useContext } from 'react';
 import { StoreContext } from '../../../context/StoreContext';
 import { Footer } from '../../Footer/Footer';

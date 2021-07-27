@@ -1,10 +1,14 @@
 @import '../../scss/variables';
+@import '../../scss/mixins';
 
 .containerBrandMenu{
     background-color: white;
     display: grid;
     grid-template-columns: 10% 70% 20%;
     height: 89vh;
+    @include Asmall(){
+        height: auto;
+    }
     .content{
         margin: 40px 0 0 0;
         .pestana {
@@ -39,10 +43,25 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(2, 1fr);
+            @include Asmall(){
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                margin-bottom: 15px;
+            }
             grid-gap: 10px 5px;
             .brand{
+                cursor: pointer;
                 img{
                     width: 85%;
+                    @include tabletLaptop(){
+                        width: 75%;
+                    }
+                    @include laptopDesktop(){
+                        width: 75%;
+                    }
+                    @include desktopFull(){
+                        width: 65%;
+                    }
                 }
                 .pizzeriaName {
                     font-size: 11px;

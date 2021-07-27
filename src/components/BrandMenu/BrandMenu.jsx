@@ -1,7 +1,6 @@
 import './BrandMenu.scss';
 
-import React, { useContext, useEffect, useState } from 'react'
-import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
 import { DataContext } from "../../context/GlobalDataContext";
 import imgPass from '../../images/ic_contrasena.png';
 import { Footer } from '../Footer/Footer';
@@ -11,28 +10,25 @@ import { LoginContext } from '../../context/LoginContext';
 
 export const BrandMenu = () => {
 
-    useEffect(() => {
-        getImgPizzerias();
-    }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
     const history = useHistory();
+
     const dataContext = useContext(DataContext);
-    const { DataGlobal } = dataContext;
+    const { dataGlobal } = dataContext;
+
     const storeContext = useContext(StoreContext);
     const { setStore } = storeContext;
-    const [dataGlobal, setDataGlobal] = useState([]);
-    let dataGlobalInt = [ ...DataGlobal.response.stores ];
+
     const loginContext = useContext(LoginContext);
     const { setLogin } = loginContext;
+
     const [ busqueda, setBusqueda ] = useState("");
     const [ mostrarBusqueda, setMostrarBusqueda ] = useState(false);
     const [ filtro, setFiltro ] = useState([]);
 
-    useEffect(() => {       
-        
+    useEffect(() => {      
         if(busqueda !== "" && busqueda) {
             const busquedaLoc = busqueda.toLowerCase();
-            const filtro = dataGlobal.filter( store => {
+            const filtro = dataGlobal.stores.filter( store => {
                     return store.name.toLowerCase().includes(busquedaLoc);
             })
             setMostrarBusqueda(true);
@@ -44,28 +40,6 @@ export const BrandMenu = () => {
 
     }, [busqueda])
         
-    const getImgPizzerias = async() => {
-        try{
-            const resp = await axios.get(process.env.REACT_APP_PIZZERIAS);
-            const { data } = resp;
-
-            dataGlobalInt.map((store, index) => {
-                if(data.length > 0) {
-                data.filter((pizzeria) => {
-                    if (pizzeria.id === index + 1) {
-                        store.logo = pizzeria.logo;
-                    }
-                })
-                }
-            });
-
-            setDataGlobal(dataGlobalInt);
-            
-        }catch(err) {
-            alert(`!UPS! Ocurrio un error con el servicio, por favor vuelve a ingresar mas tarde, Error: ${err}`);
-        }
-    }
-
     return (
         <>
         <div className="containerBrandMenu">
@@ -90,8 +64,10 @@ export const BrandMenu = () => {
                 { !mostrarBusqueda
                 ?
                 <div className="brands">
-                    { dataGlobal.length > 0 && dataGlobal.map((pizzeria) => (
-                        <div key={ pizzeria.id } className="brand" onClick={ () => { setStore(pizzeria); history.push("/pizzeria") } }>
+                    { 
+                        dataGlobal.stores.map((pizzeria) => (
+                        
+                        <div key= { pizzeria.id } className="brand animate__bounceIn" onClick={ () => { setStore(pizzeria); history.push("/pizzeria") } }>
                             <img 
                                 src={ pizzeria.logo }
                                 alt={ pizzeria.name } 
@@ -99,6 +75,7 @@ export const BrandMenu = () => {
                             <p className="pizzeriaName"> { pizzeria.name } </p>
                             <p className="pizzeriaDireccion"> { pizzeria.address } </p>
                         </div>
+                        
                     )) }
                 </div>
                 :

@@ -9,9 +9,17 @@ import { DataContext } from '../../context/GlobalDataContext';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { LoginContext } from '../../context/LoginContext';
+import { Loader } from '../Loader/Loader';
+import { PizzeriasContext } from '../../context/PizzeriasContext';
 
 export const Login = () => {
 
+    const dataContext = useContext(DataContext);
+    const { dataGlobal, setDataGlobal } = dataContext;
+
+    const pizzeriasContext = useContext(PizzeriasContext);
+    const { pizzerias, getpizzerias } = pizzeriasContext;
+    
     const history = useHistory();
 
     const [msgError, setMsgError] = useState({
@@ -21,26 +29,54 @@ export const Login = () => {
     });
 
     const loginContext = useContext(LoginContext);
-    const { setLogin } = loginContext;
+    const { login, setLogin } = loginContext;
     
     const [datosForm, handleInputChange] = useForm({
         user: "jgonzalez@gonzalez.com",
         password: "jgonzalez123",
         login: false
     });
+
+    const [loading, setloading] = useState(true);    
+
     
     const { user, password } = datosForm;
-    const { setDataGlobal, DataGlobal } = useContext(DataContext);
 
     useEffect(() => {
-        obtenerData();
+        !dataGlobal.stores && obtenerData();
       }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     const obtenerData = async() => {
         try{
             const resp = await axios.get(process.env.REACT_APP_DEV_PRODUCTS_USERS_URL.toString());
             const { data } = resp;
-            setDataGlobal(data);
+            setDataGlobal(data.response);
+            setTimeout(() => {
+                obtenerPizzerias(data.response);
+                getpizzerias(data.response);                    
+            }, 2000);
+                
+        }catch(err) {
+            alert(`!UPS! Ocurrio un error con el servicio, por favor vuelve a ingresar mas tarde, Error: ${err}`);
+        }
+    }
+
+    const obtenerPizzerias = async(dataRes) => {
+        try{
+            const resp = await axios.get(process.env.REACT_APP_PIZZERIAS).then(setloading(false));
+            const { data } = resp;            
+            dataRes.stores.map((store, index) => {
+            if(data.length > 0) {
+            data.filter((pizzeria) => {
+                if (pizzeria.id === index + 1) {
+                    store.logo = pizzeria.logo;
+                }
+            })
+            }
+            });
+
+            dataRes.length > 0 && setDataGlobal(dataRes);
+
             
         }catch(err) {
             alert(`!UPS! Ocurrio un error con el servicio, por favor vuelve a ingresar mas tarde, Error: ${err}`);
@@ -82,7 +118,7 @@ export const Login = () => {
     const autenticar = () => {
         
         let loginBool;
-        DataGlobal.response.users.find(
+        dataGlobal.users.find(
             (data) => {
             loginBool = data.email === datosForm.user;
             if(loginBool){
@@ -104,7 +140,7 @@ export const Login = () => {
 
     return (
         <>
-
+            { loading && pizzerias.length === 0 ? <Loader /> : null }
             <div className="container">
                 <div className="side"></div>
                     <div className="content">
