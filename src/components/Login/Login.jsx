@@ -32,8 +32,8 @@ export const Login = () => {
     const { setLogin } = loginContext;
     
     const [datosForm, handleInputChange] = useForm({
-        user: "jgonzalez@gonzalez.com",
-        password: "jgonzalez123",
+        user: "",
+        password: "",
         login: false
     });
 
