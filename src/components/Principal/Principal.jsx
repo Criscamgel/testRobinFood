@@ -17,10 +17,10 @@ export const Principal = () => {
           <Router>
                 <div>
                     <Switch>
-                        <Route exact path="/login" component={ Login }/>
-                        <RutaPrivada exact path="/inicio" component={ BrandMenu } />
-                        <RutaPrivada exact path="/pizzeria" component={ Brand } />
-                        <Redirect to="/login" />
+                        <Route exact path="/testRobinFood/login" component={ Login }/>
+                        <RutaPrivada exact path="/testRobinFood/inicio" component={ BrandMenu } />
+                        <RutaPrivada exact path="/testRobinFood/pizzeria" component={ Brand } />
+                        <Redirect to="/testRobinFood/login" />
                     </Switch>
                 </div>
           </Router>  

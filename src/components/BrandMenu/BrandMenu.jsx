@@ -67,7 +67,7 @@ export const BrandMenu = () => {
                     { 
                         dataGlobal.stores.map((pizzeria) => (
                         
-                        <div key= { pizzeria.id } className="brand animate__bounceIn" onClick={ () => { setStore(pizzeria); history.push("/pizzeria") } }>
+                        <div key= { pizzeria.id } className="brand animate__bounceIn" onClick={ () => { setStore(pizzeria); history.push("/testRobinFood/pizzeria") } }>
                             <img 
                                 src={ pizzeria.logo }
                                 alt={ pizzeria.name } 
@@ -95,7 +95,7 @@ export const BrandMenu = () => {
 
             </div>
             <div className="sideFinal">
-                <div className="contExit" onClick={ () => {setLogin({ login: false }); history.push("/inicio")} }>
+                <div className="contExit" onClick={ () => {setLogin({ login: false }); history.push("/testRobinFood/inicio")} }>
                     <img src={ imgPass } alt="" />
                     <p className="exit">Salir</p>
                 </div>

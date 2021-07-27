@@ -127,7 +127,7 @@ export const Login = () => {
                     setLogin({user: datosForm.user,
                               password: datosForm.password,  
                               login: loginBool});
-                              history.push("/inicio");
+                              history.push("/testRobinFood/inicio");
                 }else{
                     setMsgError({
                         login: "Usuario o Contraseña invalido, revisa las credenciales" 

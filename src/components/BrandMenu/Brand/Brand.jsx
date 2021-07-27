@@ -42,13 +42,13 @@ export const Brand = () => {
                         </div>
                     </div>
                 <div className="sideFinal">
-                    <div className="contExit" onClick={ () => {setLogin({ login: false }); history.push("/inicio")} }>
+                    <div className="contExit" onClick={ () => {setLogin({ login: false }); history.push("/testRobinFood/inicio")} }>
                         <img src={ imgPass } alt="" />
                         <p className="exit">Salir</p>
                     </div>
                     <div className="side"></div>
 
-                    <div className="volver" onClick={ () => { history.push("/inicio") } }>
+                    <div className="volver" onClick={ () => { history.push("/testRobinFood/inicio") } }>
                         <i className="fa fa-chevron-circle-left"/>
                         <p>Volver</p>
                     </div>
