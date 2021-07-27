@@ -128,7 +128,6 @@ export const Login = () => {
                         login: loginBool});
                         history.push("/testRobinFood/inicio");
                 }else{
-                    console.log('Que pasa!!!');
                     setMsgError({
                         login: "Usuario o Contraseña invalido, revisa las credenciales" 
                     });
