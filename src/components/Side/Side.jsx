@@ -1,6 +1,6 @@
 import './Side.scss';
 import React from 'react';
-import Pizza from '../../images/Pizza.png';
+import Pizza from '../../images/pizza.png';
 
 export const Side = () => {
     return (

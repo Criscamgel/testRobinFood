@@ -1,5 +1,5 @@
 import './Footer.scss';
-import bestPizza from '../../images/Best_Pizza_blanco.png';
+import bestPizza from '../../images/best_pizza_blanco.png';
 
 import React from 'react'
 

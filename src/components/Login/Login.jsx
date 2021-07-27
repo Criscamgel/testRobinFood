@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './Login.scss';
-import BestPizza from '../../images/Login-Best-Pizza.png';
+import BestPizza from '../../images/login-best-pizza.png';
 import validator from 'validator';
 import { useForm } from '../hooks/useForm';
 import icUser from '../../images/ic_usuario.png';
