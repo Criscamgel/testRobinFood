@@ -123,18 +123,18 @@ export const Login = () => {
             loginBool = data.email === datosForm.user;
             if(loginBool){
             loginBool = data.password === datosForm.password;
-                if(loginBool){
-                    setLogin({user: datosForm.user,
-                              password: datosForm.password,  
-                              login: loginBool});
-                              history.push("/testRobinFood/inicio");
+            setLogin({user: datosForm.user,
+                        password: datosForm.password,  
+                        login: loginBool});
+                        history.push("/testRobinFood/inicio");
                 }else{
+                    console.log('Que pasa!!!');
                     setMsgError({
                         login: "Usuario o Contraseña invalido, revisa las credenciales" 
                     });
                 }    
             }
-            }
+            
         );
     }
 
