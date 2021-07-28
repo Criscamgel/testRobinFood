@@ -81,7 +81,7 @@ export const BrandMenu = () => {
                 :
                 <div className="brands">
                     { filtro.map((pizzeria) => (
-                        <div key={ pizzeria.id } className="brand" onClick={ () => { setStore(pizzeria); history.push("/pizzeria") } }>
+                        <div key={ pizzeria.id } className="brand" onClick={ () => { setStore(pizzeria); history.push("/testRobinFood/pizzeria") } }>
                             <img 
                                 src={ pizzeria.logo }
                                 alt={ pizzeria.name } 
